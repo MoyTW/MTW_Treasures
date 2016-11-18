@@ -1,35 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ThingDefs>
 
-  <ThingDef Name="ApparelBase" Abstract="True">
-    <thingClass>Apparel</thingClass>
-    <category>Item</category>
-    <selectable>True</selectable>
-    <pathCost>10</pathCost>
-    <useHitPoints>True</useHitPoints>
-    <graphicData>
-      <onGroundRandomRotateAngle>35</onGroundRandomRotateAngle>
-    </graphicData>
-    <drawGUIOverlay>true</drawGUIOverlay>
-    <statBases>
-      <DeteriorationRate>0</DeteriorationRate>
-      <SellPriceFactor>1.5</SellPriceFactor>
-    </statBases>
-    <altitudeLayer>Item</altitudeLayer>
-    <alwaysHaulable>True</alwaysHaulable>
-    <tickerType>Never</tickerType>
-    <comps>
-      <li Class="CompProperties_Forbiddable"/>
-    </comps>
-  </ThingDef>
-
   <ThingDef ParentName="ApparelBase">
     <thingClass>MTW_Treasures.Treasure_HumaktsRavenBanner</thingClass>
     <defName>HumaktsRavenBanner</defName>
     <label>Humakt's Raven Banner</label>
     <description>A legendary treasure of the First Age. When carried into a fight, this battle standard guarantees victory in battle. However, it does so at great cost: the standard bearer is always killed.</description>
     <graphicData>
-      <texPath>Things/Treasures/Apparel/HumaktsRavenBanner</texPath>
+      <texPath>Things/Treasures/HumaktsRavenBanner/HumaktsRavenBanner</texPath>
       <graphicClass>Graphic_Single</graphicClass>
       <OnGroundRandomRotateAngle>35</OnGroundRandomRotateAngle>
     </graphicData>
