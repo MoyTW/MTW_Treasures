@@ -24,6 +24,7 @@
   </ThingDef>
 
   <ThingDef ParentName="ApparelBase">
+    <thingClass>MTW_Treasures.Treasure_HumaktsRavenBanner</thingClass>
     <defName>HumaktsRavenBanner</defName>
     <label>Humakt's Raven Banner</label>
     <description>A legendary treasure of the First Age. When carried into a fight, this battle standard guarantees victory in battle. However, it does so at great cost: the standard bearer is always killed.</description>
@@ -37,6 +38,7 @@
       <MaxHitPoints>1000</MaxHitPoints>
       <Flammability>1.0</Flammability>
     </statBases>
+    <tickerType>Normal</tickerType>
     <apparel>
       <bodyPartGroups>
         <li>Hands</li>
