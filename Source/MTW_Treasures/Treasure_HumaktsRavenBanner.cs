@@ -17,6 +17,9 @@ namespace MTW_Treasures
 
     class Treasure_HumaktsRavenBanner : Apparel
     {
+        private static readonly ThingDef bannerStatBonusDef =
+            DefDatabase<ThingDef>.GetNamed("HumaktsRavenBannerStatBonus");
+
         private Pawn lastBearer;
         private BannerState bannerState;
 
@@ -64,6 +67,32 @@ namespace MTW_Treasures
             this.lastBearer = null;
         }
 
+        private void GrantBannerBlessings()
+        {
+            foreach (Pawn colonist in Find.MapPawns.FreeColonists)
+            {
+                var newBonus = (Apparel)ThingMaker.MakeThing(Treasure_HumaktsRavenBanner.bannerStatBonusDef);
+                colonist.apparel.Wear(newBonus, true);
+            }
+        }
+
+        private void RemoveBannerBlessings()
+        {
+            var colonistList = Find.MapPawns.FreeColonists;
+            foreach (Pawn colonist in colonistList)
+            {
+                foreach (Apparel apparel in colonist.apparel.WornApparel)
+                {
+                    if (apparel.def == bannerStatBonusDef)
+                    {
+                        Apparel unusedDestroyedApparel;
+                        colonist.apparel.TryDrop(apparel, out unusedDestroyedApparel, colonist.Position);
+                        break;
+                    }
+                }
+            }
+        }
+
         private void fromUnusedState()
         {
             if (this.wearer != null)
@@ -72,6 +101,7 @@ namespace MTW_Treasures
 
                 if (this.EnemiesPresent)
                 {
+                    this.GrantBannerBlessings();
                     this.bannerState = BannerState.WieldedDanger;
                 }
                 else
@@ -90,6 +120,7 @@ namespace MTW_Treasures
             }
             else if (this.EnemiesPresent)
             {
+                this.GrantBannerBlessings();
                 this.bannerState = BannerState.WieldedDanger;
             }
         }
@@ -99,11 +130,13 @@ namespace MTW_Treasures
             if (!this.EnemiesPresent)
             {
                 this.KillFormerBearer();
+                this.RemoveBannerBlessings();
                 this.bannerState = BannerState.Unused;
             }
             else if (this.wearer == null && this.lastBearer.corpse != null)
             {
                 this.KillFormerBearer();
+                this.RemoveBannerBlessings();
                 this.bannerState = BannerState.Unused;
             }
             else if (this.wearer == null)
@@ -117,6 +150,7 @@ namespace MTW_Treasures
         {
             if (!this.EnemiesPresent)
             {
+                this.RemoveBannerBlessings();
                 this.bannerState = BannerState.Unused;
             }
             else if (this.wearer != null)
