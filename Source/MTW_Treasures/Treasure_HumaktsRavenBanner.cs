@@ -140,7 +140,7 @@ namespace MTW_Treasures
                 this.KillFormerBearer();
                 this.bannerState = BannerState.Unused;
             }
-            else if (this.wearer == null && this.lastBearer.corpse != null)
+            else if (this.wearer == null && this.lastBearer.corpse == null)
             {
                 this.KillFormerBearer();
                 this.bannerState = BannerState.Unused;
