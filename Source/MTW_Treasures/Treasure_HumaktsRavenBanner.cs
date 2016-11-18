@@ -69,7 +69,7 @@ namespace MTW_Treasures
 
         private void GrantBannerBlessings()
         {
-            foreach (Pawn colonist in Find.MapPawns.FreeColonists)
+            foreach (Pawn colonist in Find.MapPawns.FreeColonists.Where(c => c != this.wearer))
             {
                 var newBonus = (Apparel)ThingMaker.MakeThing(Treasure_HumaktsRavenBanner.bannerStatBonusDef);
                 colonist.apparel.Wear(newBonus, true);
