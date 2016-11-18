@@ -27,4 +27,22 @@
     </apparel>
   </ThingDef>
 
+  <ThingDef ParentName="StatBonus">
+    <defName>HumaktsRavenBannerStatBonus</defName>
+    <label>humakt's favor</label>
+    <description>The Raven Banner has been hoisted! We will have victory in this battle!</description>
+    <graphicData>
+      <texPath>Things/Treasures/HumaktsRavenBanner/HumaktsRavenBanner</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <equippedStatOffsets>
+      <!-- Not sure if this will work! -->
+      <ArmorRating_Blunt>5000</ArmorRating_Blunt>
+      <ArmorRating_Sharp>5000</ArmorRating_Sharp>
+      <ArmorRating_Heat>5000</ArmorRating_Heat>
+      <ArmorRating_Electric>5000</ArmorRating_Electric>
+      <MoveSpeed>0.5</MoveSpeed>
+    </equippedStatOffsets>
+  </ThingDef>
+
 </ThingDefs>
