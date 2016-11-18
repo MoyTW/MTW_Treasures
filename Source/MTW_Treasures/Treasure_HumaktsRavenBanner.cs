@@ -35,6 +35,8 @@ namespace MTW_Treasures
 
         private void KillFormerBearer()
         {
+            this.RemoveBannerBlessings();
+
             if (this.lastBearer == null)
             {
                 Log.Warning("Humakt's Raven Banner tried to kill a null bearer!");
@@ -67,7 +69,6 @@ namespace MTW_Treasures
             }
 
             this.lastBearer = null;
-            this.RemoveBannerBlessings();
         }
 
         private void GrantBannerBlessings()
