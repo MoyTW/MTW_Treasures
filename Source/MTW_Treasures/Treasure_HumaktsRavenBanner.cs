@@ -64,7 +64,7 @@ namespace MTW_Treasures
             this.lastBearer = null;
         }
 
-        private BannerState fromUnusedState()
+        private void fromUnusedState()
         {
             if (this.wearer != null)
             {
@@ -72,85 +72,57 @@ namespace MTW_Treasures
 
                 if (this.EnemiesPresent)
                 {
-                    return BannerState.WieldedDanger;
+                    this.bannerState = BannerState.WieldedDanger;
                 }
                 else
                 {
-                    return BannerState.WieldedSafe;
+                    this.bannerState = BannerState.WieldedSafe;
                 }
-            }
-            else
-            {
-                return BannerState.Unused;
             }
         }
 
-        private BannerState fromWieldedSafeState()
+        private void fromWieldedSafeState()
         {
             if (this.wearer == null)
             {
                 this.KillFormerBearer();
-                return BannerState.Unused;
+                this.bannerState = BannerState.Unused;
             }
             else if (this.EnemiesPresent)
             {
-                return BannerState.WieldedDanger;
-            }
-            else
-            {
-                return BannerState.WieldedSafe;
+                this.bannerState = BannerState.WieldedDanger;
             }
         }
 
-        private BannerState fromWieldedDangerState()
+        private void fromWieldedDangerState()
         {
             if (!this.EnemiesPresent)
             {
                 this.KillFormerBearer();
-                return BannerState.Unused;
+                this.bannerState = BannerState.Unused;
             }
             else if (this.wearer == null && this.lastBearer.corpse != null)
             {
                 this.KillFormerBearer();
-                return BannerState.Unused;
+                this.bannerState = BannerState.Unused;
             }
             else if (this.wearer == null)
             {
                 this.lastBearer = null;
-                return BannerState.DroppedDanger;
-            }
-            else
-            {
-                return BannerState.WieldedDanger;
+                this.bannerState = BannerState.DroppedDanger;
             }
         }
 
-        private BannerState fromDroppedDangerState()
+        private void fromDroppedDangerState()
         {
             if (!this.EnemiesPresent)
             {
-                return BannerState.Unused;
+                this.bannerState = BannerState.Unused;
             }
             else if (this.wearer != null)
             {
                 this.lastBearer = this.wearer;
-                return BannerState.WieldedDanger;
-            }
-            else
-            {
-                return BannerState.DroppedDanger;
-            }
-        }
-
-        private BannerState doTransition(BannerState prevState)
-        {
-            switch(prevState)
-            {
-                case BannerState.Unused: return this.fromUnusedState();
-                case BannerState.WieldedSafe: return this.fromWieldedSafeState();
-                case BannerState.WieldedDanger: return this.fromWieldedDangerState();
-                case BannerState.DroppedDanger: return this.fromDroppedDangerState();
-                default: throw new ArgumentOutOfRangeException("State " + prevState + " is not a valid state!");
+                this.bannerState = BannerState.WieldedDanger;
             }
         }
 
@@ -158,9 +130,14 @@ namespace MTW_Treasures
         {
             base.Tick();
 
-            // TODO: Confusing; don't mix functional with side-effects!
-            var nextState = this.doTransition(this.bannerState);
-            this.bannerState = nextState;
+            switch (this.bannerState)
+            {
+                case BannerState.Unused: this.fromUnusedState(); break;
+                case BannerState.WieldedSafe: this.fromWieldedSafeState(); break;
+                case BannerState.WieldedDanger: this.fromWieldedDangerState(); break;
+                case BannerState.DroppedDanger: this.fromDroppedDangerState(); break;
+                default: throw new ArgumentOutOfRangeException("State " + this.bannerState + " is not a valid state!");
+            }
         }
 
         public override void ExposeData()
