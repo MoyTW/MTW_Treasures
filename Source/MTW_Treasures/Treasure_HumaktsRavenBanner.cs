@@ -53,8 +53,10 @@ namespace MTW_Treasures
             int cuts = 0;
             while (this.lastBearer.corpse == null && cuts < 100)
             {
-                BodyPartDamageInfo value = new BodyPartDamageInfo(null, new BodyPartDepth?(BodyPartDepth.Inside));
+                var brainRecord = this.lastBearer.health.hediffSet.GetBrain();
+                BodyPartDamageInfo value = new BodyPartDamageInfo(brainRecord, false);
                 var dinfo = new DamageInfo(DamageDefOf.ExecutionCut, 9999, this, value, null);
+                dinfo.AllowDamagePropagation = false;
                 this.lastBearer.TakeDamage(dinfo);
                 cuts++;
             }
@@ -92,8 +94,11 @@ namespace MTW_Treasures
                     }
                 }
             }
-            Apparel dropped;
-            this.wearer.apparel.TryDrop(this, out dropped);
+            if (this.wearer != null)
+            {
+                Apparel dropped;
+                this.wearer.apparel.TryDrop(this, out dropped);
+            }
         }
 
         private void fromUnusedState()
