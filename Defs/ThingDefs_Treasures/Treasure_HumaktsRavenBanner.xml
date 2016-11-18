@@ -36,12 +36,17 @@
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <equippedStatOffsets>
-      <!-- Not sure if this will work! -->
-      <ArmorRating_Blunt>5000</ArmorRating_Blunt>
-      <ArmorRating_Sharp>5000</ArmorRating_Sharp>
-      <ArmorRating_Heat>5000</ArmorRating_Heat>
-      <ArmorRating_Electric>5000</ArmorRating_Electric>
-      <MoveSpeed>0.5</MoveSpeed>
+      <ArmorRating_Blunt>1.5</ArmorRating_Blunt>
+      <ArmorRating_Sharp>1.5</ArmorRating_Sharp>
+      <ArmorRating_Heat>1.5</ArmorRating_Heat>
+      <ArmorRating_Electric>1.5</ArmorRating_Electric>
+      <AimingDelayFactor>-0.33</AimingDelayFactor>
+      <!--
+      Melee stats don't work for unknown reasons!
+      <MeleeWeapon_Cooldown>-0.20</MeleeWeapon_Cooldown>
+      <MeleeWeapon_DamageAmount>5</MeleeWeapon_DamageAmount>
+      -->
+      <MoveSpeed>1.5</MoveSpeed>
     </equippedStatOffsets>
   </ThingDef>
 
