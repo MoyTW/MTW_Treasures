@@ -24,6 +24,9 @@ namespace MTW_Treasures
                 return;
             }
 
+            Messages.Message("Once hoisted, Humakt's Raven Banner cannot be laid down without its due in death!",
+                this.bearer, MessageSound.Negative);
+
             int cuts = 0;
             while (this.bearer.corpse == null && cuts < 100)
             {
