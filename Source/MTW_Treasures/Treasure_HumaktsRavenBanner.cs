@@ -91,6 +91,8 @@ namespace MTW_Treasures
                     }
                 }
             }
+            Apparel dropped;
+            this.wearer.apparel.TryDrop(this, out dropped);
         }
 
         private void fromUnusedState()
