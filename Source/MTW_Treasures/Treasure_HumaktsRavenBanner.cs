@@ -19,7 +19,7 @@ namespace MTW_Treasures
             }
             if (this.bearer.corpse != null)
             {
-                Log.Warning("Humakt's Raven Banner can kill bearer " + bearer.Label + ", bearer is already dead!");
+                Log.Warning("Humakt's Raven Banner can't kill bearer " + bearer.Label + ", bearer is already dead!");
                 this.bearer = null;
                 return;
             }
