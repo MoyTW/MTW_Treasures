@@ -73,6 +73,7 @@ namespace MTW_Treasures
 
         private void GrantBannerBlessings()
         {
+            Messages.Message("Humakt's Raven Banner has been hoisted! Victory is guaranteed!", MessageSound.Benefit);
             foreach (Pawn colonist in Find.MapPawns.FreeColonists.Where(c => c != this.wearer))
             {
                 var newBonus = (Apparel)ThingMaker.MakeThing(Treasure_HumaktsRavenBanner.bannerStatBonusDef);
