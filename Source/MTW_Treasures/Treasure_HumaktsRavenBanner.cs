@@ -65,6 +65,7 @@ namespace MTW_Treasures
             }
 
             this.lastBearer = null;
+            this.RemoveBannerBlessings();
         }
 
         private void GrantBannerBlessings()
@@ -132,13 +133,11 @@ namespace MTW_Treasures
             if (!this.EnemiesPresent)
             {
                 this.KillFormerBearer();
-                this.RemoveBannerBlessings();
                 this.bannerState = BannerState.Unused;
             }
             else if (this.wearer == null && this.lastBearer.corpse != null)
             {
                 this.KillFormerBearer();
-                this.RemoveBannerBlessings();
                 this.bannerState = BannerState.Unused;
             }
             else if (this.wearer == null)
