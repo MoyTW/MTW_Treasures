@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Text;
 
 using RimWorld;
 using Verse;
@@ -63,6 +64,14 @@ namespace MTW_Treasures
             {
                 this.addFlour();
             }
+        }
+
+        public override string GetInspectString()
+        {
+            var inspectString = new StringBuilder(base.GetInspectString());
+            inspectString.AppendFormat("Current flour: {0}/{1}", this.storedFlour,
+                Treasure_BoxOfPerpetualFlour.storedFlourMax);
+            return inspectString.ToString();
         }
 
         public override void ExposeData()
