@@ -16,8 +16,7 @@ namespace MTW_Treasures
 
         // Specifies behaviour; should really be in XML
         private const int storedFlourMax = 75;
-        private const int numPawnsToFeed = 200;
-        //private const int numPawnsToFeed = 2;
+        private const int numPawnsToFeed = 2;
 
         // Calculate how much flour it should generate
         private const float avgMealsPerPawnPerDay = 2.0f;
