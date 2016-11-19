@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ThingDefs>
+
+  <ThingDef ParentName="BaseMeleeWeapon">
+    <defName>DragontoothSpear</defName>
+    <label>Dragontooth Spear</label>
+    <description>The treasure is a spear carved from the tooth of a dragon. Our god-talkers said that it will help us pierce through defenses erected against us.</description>
+    <graphicData>
+      <texPath>Things/Treasures/DragontoothSpear/DragontoothSpear</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <weaponTags>
+      <li>Neolithic</li>
+      <li>NeolithicMelee</li>
+    </weaponTags>
+    <statBases>
+      <MarketValue>1250</MarketValue>
+      <MaxHitPoints>350</MaxHitPoints>
+      <Flammability>0</Flammability>
+      <MeleeWeapon_DamageAmount>31</MeleeWeapon_DamageAmount>
+      <MeleeWeapon_Cooldown>1.8</MeleeWeapon_Cooldown>
+    </statBases>
+    <equippedAngleOffset>-25</equippedAngleOffset>
+    <costList>
+      <Steel>1</Steel>
+    </costList>
+    <verbs>
+      <li>
+        <verbClass>MTW_Treasures.Verb_MeleeAttackDestroyStructures</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <meleeDamageDef>Stab</meleeDamageDef>
+      </li>
+    </verbs>
+  </ThingDef>
+
+</ThingDefs>
