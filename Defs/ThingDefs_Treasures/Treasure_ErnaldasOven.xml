@@ -65,4 +65,19 @@
     </building>
   </ThingDef>
 
+  <WorkGiverDef>
+    <defName>DoBillsErnaldasOven</defName>
+    <giverClass>WorkGiver_DoBill</giverClass>
+    <workType>Cooking</workType>
+    <priorityInType>100</priorityInType>
+    <fixedBillGiverDefs>
+      <li>ErnaldasOven</li>
+    </fixedBillGiverDefs>
+    <verb>cook</verb>
+    <gerund>cooking</gerund>
+    <requiredCapacities>
+      <li>Manipulation</li>
+    </requiredCapacities>
+  </WorkGiverDef>
+
 </ThingDefs>
