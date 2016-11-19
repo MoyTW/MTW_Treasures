@@ -29,7 +29,7 @@
       <Flammability>1.0</Flammability>
       <Beauty>20</Beauty>
     </statBases>
-    <description>A box of Perpetual Flour, which will help feed a clan in perpetuity. Feeds two people each year. Must be propped up to begin scooping.</description>
+    <description>A box of Perpetual Flour, which will help feed a clan in perpetuity. Provides enough flour to feed two people each year.</description>
     <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
     <staticSunShadowHeight>0.5</staticSunShadowHeight>
     <constructEffect>ConstructMetal</constructEffect>
