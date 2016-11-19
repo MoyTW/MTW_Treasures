@@ -2,6 +2,7 @@
 <ThingDefs>
 
   <ThingDef ParentName="BuildingBase">
+    <thingClass>MTW_Treasures.Treasure_BoxOfPerpetualFlour</thingClass>
     <defName>BoxOfPerpetualFlour</defName>
     <label>Box of Perpetual Flour</label>
     <graphicData>
@@ -20,8 +21,7 @@
     <blockWind>true</blockWind>
     <castEdgeShadows>true</castEdgeShadows>
     <fillPercent>0.40</fillPercent>
-    <!-- Ticks on Rare! -->
-    <tickerType>Rare</tickerType>
+    <tickerType>Normal</tickerType>
     <minifiedDef>MinifiedFurniture</minifiedDef>
     <statBases>
       <MarketValue>750</MarketValue>
