@@ -2,7 +2,7 @@
 <ThingDefs>
 
   <RecipeDef>
-    <defName>BakeMealSimple</defName>
+    <defName>BakeMealSimple_Ernalda</defName>
     <label>bake simple meal</label>
     <description>Bakes a straightforward meal.</description>
     <jobString>Baking simple meal.</jobString>
@@ -41,6 +41,126 @@
     <workSkill>Cooking</workSkill>
   </RecipeDef>
 
+  <RecipeDef>
+		<defName>BakeMealFine_Ernalda</defName>
+		<label>bake fine meal</label>
+		<description>Bakes a somewhat complex meal from a combination of raw meat and raw plant ingredients.</description>
+		<jobString>Baking fine meal.</jobString>
+		<workSpeedStat>CookSpeed</workSpeedStat>
+		<effectWorking>Cook</effectWorking>
+    <soundWorking>Recipe_CookMeal</soundWorking>
+    <allowMixingIngredients>true</allowMixingIngredients>
+    <ingredientValueGetterClass>IngredientValueGetter_Nutrition</ingredientValueGetterClass>
+    <ingredients>
+			<li>
+				<filter>
+					<categories>
+						<li>MeatRaw</li>
+            <li>AnimalProductRaw</li>
+          </categories>
+				</filter>
+				<count>0.25</count>
+			</li>
+			<li>
+				<filter>
+					<categories>
+						<li>PlantFoodRaw</li>
+					</categories>
+				</filter>
+				<count>0.15</count>
+			</li>
+		</ingredients>
+		<products>
+      <MealFine>1</MealFine>
+    </products>
+		<fixedIngredientFilter>
+			<categories>
+				<li>FoodRaw</li>
+			</categories>
+      <disallowedSpecialFilters>
+        <li>AllowPlantFood</li>
+      </disallowedSpecialFilters>
+		</fixedIngredientFilter>
+		<defaultIngredientFilter>
+			<categories>
+				<li>FoodRaw</li>
+			</categories>
+      <exceptedCategories>
+        <li>EggsFertilized</li>
+      </exceptedCategories>
+      <exceptedThingDefs>
+				<li>Human_Meat</li>
+			</exceptedThingDefs>
+		</defaultIngredientFilter>
+		<skillRequirements>
+			<li>
+				<skill>Cooking</skill>
+				<minLevel>6</minLevel>
+			</li>
+		</skillRequirements>
+    <workSkill>Cooking</workSkill>
+  </RecipeDef>
+
+	<RecipeDef>
+		<defName>BakeMealLavish_Ernalda</defName>
+		<label>bake lavish meal</label>
+		<description>Bakes a very complex meal from a combination of raw meat and raw plant ingredients. Much of the ingredients are wasted.</description>
+		<jobString>Baking lavish meal.</jobString>
+		<workSpeedStat>CookSpeed</workSpeedStat>
+		<effectWorking>Cook</effectWorking>
+    <soundWorking>Recipe_CookMeal</soundWorking>
+    <allowMixingIngredients>true</allowMixingIngredients>
+		<ingredientValueGetterClass>IngredientValueGetter_Nutrition</ingredientValueGetterClass>
+		<ingredients>
+			<li>
+				<filter>
+					<categories>
+						<li>MeatRaw</li>
+            <li>AnimalProductRaw</li>
+          </categories>
+				</filter>
+				<count>0.5</count>
+			</li>
+			<li>
+				<filter>
+					<categories>
+						<li>PlantFoodRaw</li>
+					</categories>
+				</filter>
+				<count>0.3</count>
+			</li>
+		</ingredients>
+		<products>
+      <MealLavish>1</MealLavish>
+    </products>
+		<fixedIngredientFilter>
+			<categories>
+				<li>FoodRaw</li>
+			</categories>
+      <disallowedSpecialFilters>
+        <li>AllowPlantFood</li>
+      </disallowedSpecialFilters>
+		</fixedIngredientFilter>
+		<defaultIngredientFilter>
+			<categories>
+				<li>FoodRaw</li>
+			</categories>
+      <exceptedCategories>
+        <li>EggsFertilized</li>
+      </exceptedCategories>
+      <exceptedThingDefs>
+				<li>Human_Meat</li>
+			</exceptedThingDefs>
+		</defaultIngredientFilter>
+		<skillRequirements>
+			<li>
+				<skill>Cooking</skill>
+				<minLevel>10</minLevel>
+			</li>
+		</skillRequirements>
+    <workSkill>Cooking</workSkill>
+  </RecipeDef>
+
   <ThingDef ParentName="BenchBase">
     <defName>ErnaldasOven</defName>
     <label>Ernalda's Oven</label>
@@ -76,13 +196,13 @@
     <interactionCellOffset>(0,0,-1)</interactionCellOffset>
     <surfaceType>Item</surfaceType>
     <recipes>
-      <li>BakeMealSimple</li>
+      <li>BakeMealSimple_Ernalda</li>
+      <li>BakeMealFine_Ernalda</li>
+      <li>BakeMealLavish_Ernalda</li>
       <li>CookMealSimple</li>
-    <!--
       <li>CookMealFine</li>
       <li>CookMealLavish</li>
       <li>MakePemmican</li>
-      -->
     </recipes>
     <inspectorTabs>
       <li>ITab_Bills</li>
