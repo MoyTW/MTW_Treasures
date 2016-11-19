@@ -1,6 +1,46 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ThingDefs>
 
+  <RecipeDef>
+    <defName>BakeMealSimple</defName>
+    <label>bake simple meal</label>
+    <description>Bakes a straightforward meal.</description>
+    <jobString>Baking simple meal.</jobString>
+    <workSpeedStat>CookSpeed</workSpeedStat>
+    <requiredGiverWorkType>Cooking</requiredGiverWorkType>
+    <effectWorking>Cook</effectWorking>
+    <soundWorking>Recipe_CookMeal</soundWorking>
+    <allowMixingIngredients>true</allowMixingIngredients>
+    <ingredientValueGetterClass>IngredientValueGetter_Nutrition</ingredientValueGetterClass>
+    <ingredients>
+      <li>
+        <filter>
+          <categories>
+            <li>PlantFoodRaw</li>
+          </categories>
+        </filter>
+        <count>0.35</count>
+      </li>
+    </ingredients>
+    <products>
+      <MealSimple>1</MealSimple>
+    </products>
+    <fixedIngredientFilter>
+      <categories>
+        <li>PlantFoodRaw</li>
+      </categories>
+      <disallowedSpecialFilters>
+        <li>AllowPlantFood</li>
+      </disallowedSpecialFilters>
+    </fixedIngredientFilter>
+    <defaultIngredientFilter>
+      <categories>
+        <li>FoodRaw</li>
+      </categories>
+    </defaultIngredientFilter>
+    <workSkill>Cooking</workSkill>
+  </RecipeDef>
+
   <ThingDef ParentName="BenchBase">
     <defName>ErnaldasOven</defName>
     <label>Ernalda's Oven</label>
@@ -36,8 +76,9 @@
     <interactionCellOffset>(0,0,-1)</interactionCellOffset>
     <surfaceType>Item</surfaceType>
     <recipes>
-    <!--
+      <li>BakeMealSimple</li>
       <li>CookMealSimple</li>
+    <!--
       <li>CookMealFine</li>
       <li>CookMealLavish</li>
       <li>MakePemmican</li>
