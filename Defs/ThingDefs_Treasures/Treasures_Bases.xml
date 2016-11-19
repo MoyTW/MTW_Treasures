@@ -1,6 +1,47 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ThingDefs>
 
+ <ThingDef Abstract="True" Name="OrganicProductBase" ParentName="ResourceBase">
+    <graphicData>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <socialPropernessMatters>true</socialPropernessMatters>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <Flammability>1.0</Flammability>
+      <DeteriorationRate>10</DeteriorationRate>
+    </statBases>
+    <tickerType>Rare</tickerType>
+  </ThingDef>
+
+  <ThingDef Abstract="True" Name="PlantFoodRawBase" ParentName="OrganicProductBase">
+    <ingestible>
+      <preferability>RawBad</preferability>
+      <tastesRaw>true</tastesRaw>
+      <nutrition>0.05</nutrition>
+      <ingestEffect>EatVegetarian</ingestEffect>
+      <ingestSound>RawVegetable_Eat</ingestSound>
+    </ingestible>
+    <thingCategories>
+      <li>PlantFoodRaw</li>
+    </thingCategories>
+    <comps>
+      <li Class="CompProperties_FoodPoisoningChance" />
+    </comps>
+  </ThingDef>
+
+  <ThingDef Name="BuildingBase" Abstract="True">
+    <category>Building</category>
+    <thingClass>Building</thingClass>
+    <soundImpactDefault>BulletImpactMetal</soundImpactDefault>
+    <selectable>true</selectable>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+    <repairEffect>Repair</repairEffect>
+    <leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+    <filthLeaving>BuildingRubble</filthLeaving>
+  </ThingDef>
+
   <ThingDef Name="ApparelBase" Abstract="True">
     <thingClass>Apparel</thingClass>
     <category>Item</category>
