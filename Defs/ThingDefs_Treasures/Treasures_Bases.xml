@@ -1,6 +1,42 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ThingDefs>
 
+  <!-- Weapons -->
+  <ThingDef Name="BaseMeleeWeapon" Abstract="True">
+    <category>Item</category>
+    <thingClass>ThingWithComps</thingClass>
+    <equipmentType>Primary</equipmentType>
+    <pathCost>10</pathCost>
+    <useHitPoints>True</useHitPoints>
+    <selectable>True</selectable>
+    <graphicData>
+      <onGroundRandomRotateAngle>35</onGroundRandomRotateAngle>
+    </graphicData>
+    <drawGUIOverlay>true</drawGUIOverlay>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <Flammability>1.0</Flammability>
+      <DeteriorationRate>1</DeteriorationRate>
+      <SellPriceFactor>0.5</SellPriceFactor>
+    </statBases>
+    <altitudeLayer>Item</altitudeLayer>
+    <alwaysHaulable>True</alwaysHaulable>
+    <tickerType>Never</tickerType>
+    <weaponTags>
+      <li>Melee</li>
+    </weaponTags>
+    <thingCategories>
+      <li>WeaponsMelee</li>
+    </thingCategories>
+    <comps>
+      <li Class="CompProperties_Forbiddable"/>
+      <li>
+        <compClass>CompEquippable</compClass>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <!-- Foods -->
  <ThingDef Abstract="True" Name="OrganicProductBase" ParentName="ResourceBase">
     <graphicData>
       <graphicClass>Graphic_Single</graphicClass>
@@ -30,6 +66,7 @@
     </comps>
   </ThingDef>
 
+  <!-- Buidlings -->
   <ThingDef Name="BuildingBase" Abstract="True">
     <category>Building</category>
     <thingClass>Building</thingClass>
@@ -42,6 +79,7 @@
     <filthLeaving>BuildingRubble</filthLeaving>
   </ThingDef>
 
+  <!-- Apparel -->
   <ThingDef Name="ApparelBase" Abstract="True">
     <thingClass>Apparel</thingClass>
     <category>Item</category>
