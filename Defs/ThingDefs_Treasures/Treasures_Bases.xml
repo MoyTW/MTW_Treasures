@@ -79,6 +79,11 @@
     <filthLeaving>BuildingRubble</filthLeaving>
   </ThingDef>
 
+  <ThingDef Name="BenchBase" ParentName="BuildingBase" Abstract="True">
+    <castEdgeShadows>true</castEdgeShadows>
+    <staticSunShadowHeight>0.20</staticSunShadowHeight>
+  </ThingDef>
+
   <!-- Apparel -->
   <ThingDef Name="ApparelBase" Abstract="True">
     <thingClass>Apparel</thingClass>
