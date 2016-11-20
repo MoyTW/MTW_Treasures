@@ -4,8 +4,7 @@
   <IncidentDef>
     <defName>TreasureTrader</defName>
     <label>treasure trader</label>
-    <!-- Replace IncidentWorker -->
-    <workerClass>IncidentWorker_VisitorGroup</workerClass>
+    <workerClass>MTW_Treasures.IncidentWorker_SoraGoodseller</workerClass>
     <category>AllyArrival</category>
     <baseChance>4</baseChance>
     <pointsScaleable>false</pointsScaleable>
