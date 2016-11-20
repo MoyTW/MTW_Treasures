@@ -110,6 +110,7 @@
   <ThingDef Name="StatBonus" Abstract="True">
     <thingClass>Apparel</thingClass>
     <category>Item</category>
+    <tradeability>Never</tradeability>
     <selectable>false</selectable>
     <UseHitPoints>false</UseHitPoints>
     <destroyOnDrop>true</destroyOnDrop>
