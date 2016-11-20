@@ -15,33 +15,18 @@ namespace MTW_Treasures
         }
 
         // Will coerce Sora to the Faction in question if Sora already exists!
-        public static Pawn SoraGoodseller(Faction faction)
+        public static Pawn TryGetSoraGoodseller()
         {
             Pawn sora = Find.MapPawns.AllPawns.Where(p => IsSoraGoodseller(p)).FirstOrDefault();
             if (sora == null)
             {
                 sora = Find.WorldPawns.AllPawnsAlive.Where(p => IsSoraGoodseller(p)).FirstOrDefault();
             }
-            if (sora == null)
-            {
-                sora = GenSoraGoodseller(faction);
-            }
-            if (sora == null)
-            {
-                Log.Error("Could not find or generate Sora Goodseller!");
-                return null;
-            }
-
-            if (sora.Faction != faction)
-            {
-                sora.SetFaction(faction);
-            }
-
             return sora;
         }
 
         // Reference: http://kingofdragonpass.wikia.com/wiki/Sora_Goodseller
-        private static Pawn GenSoraGoodseller(Faction faction)
+        public static Pawn GenSoraGoodseller(Faction faction)
         {
             var tribalTraderDef = DefDatabase<PawnKindDef>.GetNamed("TribalTrader");
             var genRequest = new PawnGenerationRequest(tribalTraderDef, faction: faction, fixedGender: Gender.Female,

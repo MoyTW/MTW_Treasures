@@ -15,12 +15,29 @@ namespace MTW_Treasures
         public static readonly TraderKindDef SoraTraderKindDef =
             DefDatabase<TraderKindDef>.GetNamed("Visitor_Treasures_Standard");
 
+        protected override bool CanFireNowSub()
+        {
+            Pawn sora = TreasuresUtils.TryGetSoraGoodseller();
+            return sora == null || !(sora.Dead || sora.Spawned);
+        }
+
         public override bool TryExecute(IncidentParms parms)
         {
             if (!this.TryResolveParms(parms)) { return false; }
 
-            var sora = TreasuresUtils.SoraGoodseller(parms.faction);
-            if (sora.Dead && sora.Spawned) { return false; }
+            Pawn sora = TreasuresUtils.TryGetSoraGoodseller();
+            if (sora == null)
+            {
+                sora = TreasuresUtils.GenSoraGoodseller(parms.faction);
+            }
+            else if (sora.Dead || sora.Spawned)
+            {
+                return false;
+            }
+            else
+            {
+                sora.SetFaction(parms.faction);
+            }
 
             List<Pawn> list = base.SpawnPawns(parms);
             list.Add(sora);
