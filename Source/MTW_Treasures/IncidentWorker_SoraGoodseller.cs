@@ -80,7 +80,7 @@ namespace MTW_Treasures
             TraderKindDef traderKindDef = IncidentWorker_SoraGoodseller.SoraTraderKindDef;
             pawn.trader.traderKind = traderKindDef;
             pawn.inventory.DestroyAll(DestroyMode.Vanish);
-            foreach (Thing current in TraderStockGenerator.GenerateTraderThings(traderKindDef))
+            foreach (Thing current in this.GenerateTraderThings(traderKindDef))
             {
                 Pawn pawn2 = current as Pawn;
                 if (pawn2 != null)
@@ -103,6 +103,72 @@ namespace MTW_Treasures
                 PawnInventoryGenerator.GiveRandomFood(pawn);
             }
             return true;
+        }
+
+        private IEnumerable<Thing> GenerateTraderThings(TraderKindDef traderDef)
+        {
+            bool flag = false;
+            List<StockGenerator>.Enumerator enumerator = traderDef.stockGenerators.GetEnumerator();
+            try
+            {
+                while (enumerator.MoveNext())
+                {
+                    StockGenerator current = enumerator.Current;
+                    IEnumerator<Thing> enumerator2 = current.GenerateThings().GetEnumerator();
+                    try
+                    {
+                        while (enumerator2.MoveNext())
+                        {
+                            Thing current2 = enumerator2.Current;
+                            if (!(current is StockGenerator_Treasures) && current2.def.tradeability != Tradeability.Stockable)
+                            {
+                                Log.Error(string.Concat(new object[]
+                                {
+                                    traderDef,
+                                    " generated carrying ",
+                                    current2,
+                                    " which has is not Stockable. Ignoring..."
+                                }));
+                            }
+                            else
+                            {
+                                CompQuality compQuality = current2.TryGetComp<CompQuality>();
+                                if (compQuality != null)
+                                {
+                                    compQuality.SetQuality(QualityUtility.RandomTraderItemQuality(), ArtGenerationContext.Outsider);
+                                }
+                                if (current2.def.colorGeneratorInTraderStock != null)
+                                {
+                                    current2.SetColor(current2.def.colorGeneratorInTraderStock.NewRandomizedColor(), true);
+                                }
+                                if (current2.def.Minifiable)
+                                {
+                                    int stackCount = current2.stackCount;
+                                    current2.stackCount = 1;
+                                    MinifiedThing minifiedThing = current2.MakeMinified();
+                                    minifiedThing.stackCount = stackCount;
+                                }
+                                flag = true;
+                                yield return current2;
+                            }
+                        }
+                    }
+                    finally
+                    {
+                        if (!flag)
+                        {
+                            if (enumerator2 != null)
+                            {
+                                enumerator2.Dispose();
+                            }
+                        }
+                    }
+                }
+            }
+            finally
+            {
+            }
+            yield break;
         }
     }
 }

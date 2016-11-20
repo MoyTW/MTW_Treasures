@@ -11,6 +11,7 @@
       <graphicClass>Graphic_Single</graphicClass>
       <OnGroundRandomRotateAngle>35</OnGroundRandomRotateAngle>
     </graphicData>
+    <tradeability>Sellable</tradeability>
     <statBases>
       <MarketValue>1500</MarketValue>
       <MaxHitPoints>1000</MaxHitPoints>

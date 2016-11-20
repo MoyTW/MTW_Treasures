@@ -13,6 +13,7 @@
       <li>Neolithic</li>
       <li>NeolithicMelee</li>
     </weaponTags>
+    <tradeability>Sellable</tradeability>
     <statBases>
       <MarketValue>1250</MarketValue>
       <MaxHitPoints>350</MaxHitPoints>

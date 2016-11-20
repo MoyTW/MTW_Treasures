@@ -5,6 +5,7 @@
     <thingClass>MTW_Treasures.Treasure_BoxOfPerpetualFlour</thingClass>
     <defName>BoxOfPerpetualFlour</defName>
     <label>Box of Perpetual Flour</label>
+    <description>A box of Perpetual Flour, which will help feed a clan in perpetuity. Provides enough flour to feed two people each year.</description>
     <graphicData>
       <texPath>Things/Treasures/BoxOfPerpetualFlour/BoxOfPerpetualFlour</texPath>
       <graphicClass>Graphic_Single</graphicClass>
@@ -23,13 +24,13 @@
     <fillPercent>0.40</fillPercent>
     <tickerType>Normal</tickerType>
     <minifiedDef>MinifiedFurniture</minifiedDef>
+    <tradeability>Sellable</tradeability>
     <statBases>
       <MarketValue>750</MarketValue>
       <MaxHitPoints>100</MaxHitPoints>
       <Flammability>1.0</Flammability>
       <Beauty>20</Beauty>
     </statBases>
-    <description>A box of Perpetual Flour, which will help feed a clan in perpetuity. Provides enough flour to feed two people each year.</description>
     <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
     <staticSunShadowHeight>0.5</staticSunShadowHeight>
     <constructEffect>ConstructMetal</constructEffect>
@@ -47,6 +48,7 @@
     <graphicData>
       <texPath>Things/Treasures/BoxOfPerpetualFlour/Flour</texPath>
     </graphicData>
+    <tradeability>Sellable</tradeability>
     <statBases>
       <MarketValue>.5</MarketValue>
     </statBases>

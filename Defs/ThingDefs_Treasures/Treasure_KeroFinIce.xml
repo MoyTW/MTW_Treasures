@@ -23,6 +23,7 @@
     <drawerType>RealtimeOnly</drawerType>
     <fillPercent>0.40</fillPercent>
     <minifiedDef>MinifiedFurniture</minifiedDef>
+    <tradeability>Sellable</tradeability>
     <statBases>
       <MaxHitPoints>150</MaxHitPoints>
       <Flammability>0</Flammability>
