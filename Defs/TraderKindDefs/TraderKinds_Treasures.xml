@@ -20,47 +20,7 @@
           <max>2000</max>
         </countRange>
       </li>
-      <!-- TODO: Write "Treasures" gen; specifiying individually is a hack! -->
-      <li Class="StockGenerator_SingleDef">
-        <thingDef>BoxOfPerpetualFlour</thingDef>
-        <price>Normal</price>
-        <countRange>
-          <min>1</min>
-          <max>1</max>
-        </countRange>
-      </li>
-      <li Class="StockGenerator_SingleDef">
-        <thingDef>DragontoothSpear</thingDef>
-        <price>Normal</price>
-        <countRange>
-          <min>1</min>
-          <max>1</max>
-        </countRange>
-      </li>
-      <li Class="StockGenerator_SingleDef">
-        <thingDef>ErnaldasOven</thingDef>
-        <price>Normal</price>
-        <countRange>
-          <min>1</min>
-          <max>1</max>
-        </countRange>
-      </li>
-      <li Class="StockGenerator_SingleDef">
-        <thingDef>HumaktsRavenBanner</thingDef>
-        <price>Normal</price>
-        <countRange>
-          <min>1</min>
-          <max>1</max>
-        </countRange>
-      </li>
-      <li Class="StockGenerator_SingleDef">
-        <thingDef>KeroFinIce</thingDef>
-        <price>Normal</price>
-        <countRange>
-          <min>1</min>
-          <max>1</max>
-        </countRange>
-      </li>
+      <li Class="MTW_Treasures.StockGenerator_Treasures"></li>
     </stockGenerators>
   </TraderKindDef>
 

@@ -50,6 +50,7 @@
     <Compile Include="CompTreasure.cs" />
     <Compile Include="IncidentWorker_SoraGoodseller.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StockGenerator_Treasures.cs" />
     <Compile Include="TreasuresUtils.cs" />
     <Compile Include="Treasure_BoxOfPerpetualFlour.cs" />
     <Compile Include="Treasure_HumaktsRavenBanner.cs" />

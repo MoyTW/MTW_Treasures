@@ -9,10 +9,9 @@ namespace MTW_Treasures
 {
     static class TreasuresUtils
     {
-        public static readonly List<ThingDef> AllTreasureDefsListForReading =
+        public static readonly HashSet<ThingDef> AllTreasuresDefs = new HashSet<ThingDef>(
             DefDatabase<ThingDef>.AllDefsListForReading
-            .Where(def => TreasuresUtils.IsTreasureDef(def))
-            .ToList();
+            .Where(def => TreasuresUtils.IsTreasureDef(def)));
 
         public static bool IsTreasureDef(ThingDef def)
         {
