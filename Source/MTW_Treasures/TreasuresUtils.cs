@@ -17,28 +17,25 @@ namespace MTW_Treasures
             return p.Name.ToStringFull == "Sora Goodseller";
         }
 
+        // Will coerce Sora to the Faction in question if Sora already exists!
         public static Pawn SoraGoodseller(Faction faction)
         {
-            if (faction == null)
+            Pawn sora = Find.MapPawns.PawnsInFaction(faction).Where(p => IsSoraGoodseller(p)).FirstOrDefault();
+            if (sora == null)
             {
-                var mapSora = Find.MapPawns.AllPawns.Where(p => IsSoraGoodseller(p)).FirstOrDefault();
-                if (mapSora != null) { return mapSora; }
-
-                var worldSora = Find.WorldPawns.AllPawnsAlive.Where(p => IsSoraGoodseller(p)).FirstOrDefault();
-                if (worldSora != null) { return worldSora; }
-
-                return null;
+                sora = Find.WorldPawns.AllPawnsAlive.Where(p => IsSoraGoodseller(p)).FirstOrDefault();
             }
-            else
+            if (sora == null)
             {
-                var mapSora = Find.MapPawns.PawnsInFaction(faction).Where(p => IsSoraGoodseller(p)).FirstOrDefault();
-                if (mapSora != null) { return mapSora; }
-
-                var worldSora = Find.WorldPawns.AllPawnsAlive.Where(p => IsSoraGoodseller(p)).FirstOrDefault();
-                if (worldSora != null) { return worldSora; }
-
-                return GenSoraGoodseller(faction);
+                GenSoraGoodseller(faction);
             }
+
+            if (sora.Faction != faction)
+            {
+                sora.SetFaction(faction);
+            }
+
+            return sora;
         }
 
         // Reference: http://kingofdragonpass.wikia.com/wiki/Sora_Goodseller
