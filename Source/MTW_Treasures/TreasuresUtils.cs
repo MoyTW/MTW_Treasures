@@ -1,10 +1,7 @@
 ﻿using RimWorld;
 using Verse;
 using UnityEngine;
-using Verse.AI.Group;
-using RimWorld.Planet;
 
-using System.Collections.Generic;
 using System.Linq;
 
 namespace MTW_Treasures
@@ -14,20 +11,25 @@ namespace MTW_Treasures
         // This is really *kind* of a silly method of checking!
         public static bool IsSoraGoodseller(Pawn p)
         {
-            return p.Name.ToStringFull == "Sora Goodseller";
+            return p != null && p.Name != null && p.Name.ToStringFull == "Sora Goodseller";
         }
 
         // Will coerce Sora to the Faction in question if Sora already exists!
         public static Pawn SoraGoodseller(Faction faction)
         {
-            Pawn sora = Find.MapPawns.PawnsInFaction(faction).Where(p => IsSoraGoodseller(p)).FirstOrDefault();
+            Pawn sora = Find.MapPawns.AllPawns.Where(p => IsSoraGoodseller(p)).FirstOrDefault();
             if (sora == null)
             {
                 sora = Find.WorldPawns.AllPawnsAlive.Where(p => IsSoraGoodseller(p)).FirstOrDefault();
             }
             if (sora == null)
             {
-                GenSoraGoodseller(faction);
+                sora = GenSoraGoodseller(faction);
+            }
+            if (sora == null)
+            {
+                Log.Error("Could not find or generate Sora Goodseller!");
+                return null;
             }
 
             if (sora.Faction != faction)
