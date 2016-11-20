@@ -11,8 +11,38 @@ namespace MTW_Treasures
 {
     static class TreasuresUtils
     {
+        // This is really *kind* of a silly method of checking!
+        public static bool IsSoraGoodseller(Pawn p)
+        {
+            return p.Name.ToStringFull == "Sora Goodseller";
+        }
+
+        public static Pawn SoraGoodseller(Faction faction)
+        {
+            if (faction == null)
+            {
+                var mapSora = Find.MapPawns.AllPawns.Where(p => IsSoraGoodseller(p)).FirstOrDefault();
+                if (mapSora != null) { return mapSora; }
+
+                var worldSora = Find.WorldPawns.AllPawnsAlive.Where(p => IsSoraGoodseller(p)).FirstOrDefault();
+                if (worldSora != null) { return worldSora; }
+
+                return null;
+            }
+            else
+            {
+                var mapSora = Find.MapPawns.PawnsInFaction(faction).Where(p => IsSoraGoodseller(p)).FirstOrDefault();
+                if (mapSora != null) { return mapSora; }
+
+                var worldSora = Find.WorldPawns.AllPawnsAlive.Where(p => IsSoraGoodseller(p)).FirstOrDefault();
+                if (worldSora != null) { return worldSora; }
+
+                return GenSoraGoodseller(faction);
+            }
+        }
+
         // Reference: http://kingofdragonpass.wikia.com/wiki/Sora_Goodseller
-        public static Pawn GenSoraGoodseller(Faction faction)
+        private static Pawn GenSoraGoodseller(Faction faction)
         {
             var tribalTraderDef = DefDatabase<PawnKindDef>.GetNamed("TribalTrader");
             var genRequest = new PawnGenerationRequest(tribalTraderDef, faction: faction, fixedGender: Gender.Female,
