@@ -21,7 +21,7 @@ namespace MTW_Treasures
             DefDatabase<ThingDef>.GetNamed("HumaktsRavenBannerStatBonus");
 
         private Pawn lastBearer;
-        private BannerState bannerState;
+        private BannerState bannerState = BannerState.Unused;
 
         private bool EnemiesPresent
         {
