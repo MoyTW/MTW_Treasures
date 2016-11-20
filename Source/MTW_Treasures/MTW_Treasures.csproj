@@ -46,6 +46,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CompProperties_Treasure.cs" />
+    <Compile Include="CompTreasure.cs" />
     <Compile Include="IncidentWorker_SoraGoodseller.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TreasuresUtils.cs" />

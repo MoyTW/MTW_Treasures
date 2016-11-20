@@ -42,6 +42,7 @@
         <heatPerSecond>-24</heatPerSecond>
         <heatPushMinTemperature>1</heatPushMinTemperature>
       </li>
+      <li Class="MTW_Treasures.CompProperties_Treasure"></li>
     </comps>
   </ThingDef>
 

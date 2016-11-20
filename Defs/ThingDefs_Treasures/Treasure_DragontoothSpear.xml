@@ -31,6 +31,9 @@
         <meleeDamageDef>Stab</meleeDamageDef>
       </li>
     </verbs>
+    <comps>
+      <li Class="MTW_Treasures.CompProperties_Treasure"></li>
+    </comps>
   </ThingDef>
 
 </ThingDefs>

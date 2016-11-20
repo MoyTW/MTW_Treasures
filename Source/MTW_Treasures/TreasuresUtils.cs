@@ -2,12 +2,23 @@
 using Verse;
 using UnityEngine;
 
+using System.Collections.Generic;
 using System.Linq;
 
 namespace MTW_Treasures
 {
     static class TreasuresUtils
     {
+        public static readonly List<ThingDef> AllTreasureDefsListForReading =
+            DefDatabase<ThingDef>.AllDefsListForReading
+            .Where(def => TreasuresUtils.IsTreasureDef(def))
+            .ToList();
+
+        public static bool IsTreasureDef(ThingDef def)
+        {
+            return def.GetCompProperties<CompProperties_Treasure>() != null;
+        }
+
         // This is really *kind* of a silly method of checking!
         public static bool IsSoraGoodseller(Pawn p)
         {

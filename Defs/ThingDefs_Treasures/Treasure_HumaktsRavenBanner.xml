@@ -25,6 +25,9 @@
         <li>Accessory</li>
       </layers>
     </apparel>
+    <comps>
+      <li Class="MTW_Treasures.CompProperties_Treasure"></li>
+    </comps>
   </ThingDef>
 
   <ThingDef ParentName="StatBonus">

@@ -218,6 +218,7 @@
         </fuelFilter>
         <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
       </li>
+      <li Class="MTW_Treasures.CompProperties_Treasure"></li>
     </comps>
     <building>
       <isMealSource>true</isMealSource>
