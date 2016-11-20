@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<IncidentDefs>
+
+  <IncidentDef>
+    <defName>TreasureTrader</defName>
+    <label>treasure trader</label>
+    <!-- Replace IncidentWorker -->
+    <workerClass>IncidentWorker_VisitorGroup</workerClass>
+    <category>AllyArrival</category>
+    <baseChance>4</baseChance>
+    <pointsScaleable>false</pointsScaleable>
+  </IncidentDef>
+
+</IncidentDefs>
