@@ -4,7 +4,7 @@
   <ThingDef ParentName="BuildingBase">
     <defName>KeroFinIce</defName>
     <label>Kero Fin Ice</label>
-    <description>A piece of bluish ice, taken from Mount Kero Fin, the mother of Orlanth. It is exceptionally cold, and never melts.</description>
+    <description>A large chunk of bluish ice from the mother of Orlanth, Mount Kero Fin. It is very cold, and never melts.</description>
     <category>Building</category>
     <graphicData>
       <texPath>Things/Treasures/KeroFinIce/KeroFinIce</texPath>

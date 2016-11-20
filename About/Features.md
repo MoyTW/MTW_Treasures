@@ -8,7 +8,6 @@
 + Winking Sapphire
 + Dragonnewt Armor
 + Bowl of Plenty
-+ Kero Fin Ice
 + Shifting Statue
 + Mist Paper
 + Vingkot's Ale Horn

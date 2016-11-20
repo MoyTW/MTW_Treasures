@@ -30,6 +30,11 @@ An oven which can bake meals utilizing less vegetables than normal. Can also use
 
 When equipped while enemies are nearby, buffs all other pawns with greatly increased armor, speed, and faster firing. When all enemies are dead or have fled, the standard bearer's life is claimed as payment.
 
+## Kero Fin Ice
+*A large chunk of bluish ice from the mother of Orlanth, Mount Kero Fin. It is very cold, and never melts.*
+
+A more powerful passive cooler. Worth around two vanilla coolers and will cool down to 1 degree, allowing refrigeration of foods (though it's still not enough to freeze them).
+
 # Installation Information
 
 Basic installation:
