@@ -2,8 +2,8 @@
 <IncidentDefs>
 
   <IncidentDef>
-    <defName>TreasureTrader</defName>
-    <label>treasure trader</label>
+    <defName>SoraGoodseller</defName>
+    <label>sora goodseller</label>
     <workerClass>MTW_Treasures.IncidentWorker_SoraGoodseller</workerClass>
     <category>AllyArrival</category>
     <baseChance>4</baseChance>
