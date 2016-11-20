@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="IncidentWorker_SoraGoodseller.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TreasuresUtils.cs" />
     <Compile Include="Treasure_BoxOfPerpetualFlour.cs" />
     <Compile Include="Treasure_HumaktsRavenBanner.cs" />
     <Compile Include="Verb_MeleeAttackDestroyStructures.cs" />
