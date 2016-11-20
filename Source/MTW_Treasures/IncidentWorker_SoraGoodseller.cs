@@ -17,57 +17,40 @@ namespace MTW_Treasures
 
         public override bool TryExecute(IncidentParms parms)
         {
-            if (!this.TryResolveParms(parms))
-            {
-                return false;
-            }
+            if (!this.TryResolveParms(parms)) { return false; }
+
+            var sora = TreasuresUtils.SoraGoodseller(parms.faction);
+            if (sora.Dead && sora.Spawned) { return false; }
+
             List<Pawn> list = base.SpawnPawns(parms);
-            if (list.Count == 0)
-            {
-                return false;
-            }
+            list.Add(sora);
+            GenSpawn.Spawn(sora, CellFinder.RandomClosewalkCellNear(parms.spawnCenter, 5));
+
             IntVec3 chillSpot;
-            RCellFinder.TryFindRandomSpotJustOutsideColony(list[0], out chillSpot);
+            RCellFinder.TryFindRandomSpotJustOutsideColony(sora, out chillSpot);
             LordJob_VisitColony lordJob = new LordJob_VisitColony(parms.faction, chillSpot);
             LordMaker.MakeNewLord(parms.faction, lordJob, list);
 
-            bool flag = false;
-            flag = this.TryConvertOnePawnToSmallTrader(list, parms.faction);
+            this.TryConvertOnePawnToSmallTrader(new List<Pawn> { sora }, parms.faction);
 
-            Pawn pawn = list.Find((Pawn x) => parms.faction.leader == x);
+            Pawn factionLeader = list.Find((Pawn x) => parms.faction.leader == x);
             string label;
-            string text3;
-            if (list.Count == 1)
+            string letterText;
+
+            string text = "SingleVisitorArrivesTraderInfo".Translate();
+            string text2 = (factionLeader == null) ? string.Empty : "SingleVisitorArrivesLeaderInfo".Translate();
+            label = "LetterLabelSingleVisitorArrives".Translate();
+            letterText = "SingleVisitorArrives".Translate(new object[]
             {
-                string text = (!flag) ? string.Empty : "SingleVisitorArrivesTraderInfo".Translate();
-                string text2 = (pawn == null) ? string.Empty : "SingleVisitorArrivesLeaderInfo".Translate();
-                label = "LetterLabelSingleVisitorArrives".Translate();
-                text3 = "SingleVisitorArrives".Translate(new object[]
-                {
-                    list[0].story.adulthood.title.ToLower(),
-                    parms.faction.Name,
-                    list[0].Name,
-                    text,
-                    text2
-                });
-                text3 = text3.AdjustedFor(list[0]);
-            }
-            else
-            {
-                string text4 = (!flag) ? string.Empty : "GroupVisitorsArriveTraderInfo".Translate();
-                string text5 = (pawn == null) ? string.Empty : "GroupVisitorsArriveLeaderInfo".Translate(new object[]
-                {
-                    pawn.LabelShort
-                });
-                label = "LetterLabelGroupVisitorsArrive".Translate();
-                text3 = "GroupVisitorsArrive".Translate(new object[]
-                {
-                    parms.faction.Name,
-                    text4,
-                    text5
-                });
-            }
-            Find.LetterStack.ReceiveLetter(label, text3, LetterType.Good, list[0], null);
+                sora.story.adulthood.title.ToLower(),
+                parms.faction.Name,
+                sora.Name,
+                text,
+                text2
+            });
+            letterText = letterText.AdjustedFor(sora);
+
+            Find.LetterStack.ReceiveLetter(label, letterText, LetterType.Good, sora);
             return true;
         }
 
