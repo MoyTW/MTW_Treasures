@@ -35,6 +35,10 @@ When equipped while enemies are nearby, buffs all other pawns with greatly incre
 
 A more powerful passive cooler. Worth around two vanilla coolers and will cool down to 1 degree, allowing refrigeration of foods (though it's still not enough to freeze them).
 
+# Acquiring Treasures
+
+Treasures are sold by Sora Goodseller, a travelling trader-priest of Issaries. Sora's arrival incident has the same weight as a trade caravan. If she is killed, she'll stay dead, and any chances of further visits with new treasures will be spoiled.
+
 # Installation Information
 
 Basic installation:
