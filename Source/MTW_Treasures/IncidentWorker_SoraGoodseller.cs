@@ -8,8 +8,6 @@ using System.Linq;
 
 namespace MTW_Treasures
 {
-    // Literally copy-pased decompiled IncidentWorker_VisitorGroup with minimal changes!
-    // TODO: Actually make it use Sora Goodseller and don't stock duplicates!
     public class IncidentWorker_SoraGoodseller : IncidentWorker_NeutralGroup
     {
         public static readonly TraderKindDef SoraTraderKindDef =
@@ -149,6 +147,7 @@ namespace MTW_Treasures
                                 generatedThing.stackCount = 1;
                                 MinifiedThing minifiedThing = generatedThing.MakeMinified();
                                 minifiedThing.stackCount = stackCount;
+                                generatedThing = minifiedThing;
                             }
                             flag = true;
                             yield return generatedThing;
