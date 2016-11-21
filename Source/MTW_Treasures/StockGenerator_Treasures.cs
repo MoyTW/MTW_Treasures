@@ -25,7 +25,15 @@ namespace MTW_Treasures
 
         private bool CanStockTreasure(ThingDef def)
         {
-            return Find.ListerThings.ThingsOfDef(def).Count == 0;
+            if (def.Minifiable)
+            {
+                return Find.ListerThings.ThingsOfDef(def).Count == 0 &&
+                    Find.ListerThings.ThingsOfDef(def.minifiedDef).Count == 0;
+            }
+            else
+            {
+                return Find.ListerThings.ThingsOfDef(def).Count == 0;
+            }
         }
 
         public override IEnumerable<Thing> GenerateThings()
