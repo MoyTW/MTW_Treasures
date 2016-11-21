@@ -109,65 +109,64 @@ namespace MTW_Treasures
         {
             bool flag = false;
             List<StockGenerator>.Enumerator enumerator = traderDef.stockGenerators.GetEnumerator();
-            try
+
+            while (enumerator.MoveNext())
             {
-                while (enumerator.MoveNext())
+                StockGenerator currentGenerator = enumerator.Current;
+                IEnumerator<Thing> generatedThings = currentGenerator.GenerateThings().GetEnumerator();
+                try
                 {
-                    StockGenerator current = enumerator.Current;
-                    IEnumerator<Thing> enumerator2 = current.GenerateThings().GetEnumerator();
-                    try
+                    while (generatedThings.MoveNext())
                     {
-                        while (enumerator2.MoveNext())
+                        Thing generatedThing = generatedThings.Current;
+                        if (!(currentGenerator is StockGenerator_Treasures) &&
+                            generatedThing.def.tradeability != Tradeability.Stockable)
                         {
-                            Thing current2 = enumerator2.Current;
-                            if (!(current is StockGenerator_Treasures) && current2.def.tradeability != Tradeability.Stockable)
+                            Log.Error(string.Concat(new object[]
                             {
-                                Log.Error(string.Concat(new object[]
-                                {
                                     traderDef,
                                     " generated carrying ",
-                                    current2,
+                                    generatedThing,
                                     " which has is not Stockable. Ignoring..."
-                                }));
-                            }
-                            else
+                            }));
+                        }
+                        else
+                        {
+                            CompQuality compQuality = generatedThing.TryGetComp<CompQuality>();
+                            if (compQuality != null)
                             {
-                                CompQuality compQuality = current2.TryGetComp<CompQuality>();
-                                if (compQuality != null)
-                                {
-                                    compQuality.SetQuality(QualityUtility.RandomTraderItemQuality(), ArtGenerationContext.Outsider);
-                                }
-                                if (current2.def.colorGeneratorInTraderStock != null)
-                                {
-                                    current2.SetColor(current2.def.colorGeneratorInTraderStock.NewRandomizedColor(), true);
-                                }
-                                if (current2.def.Minifiable)
-                                {
-                                    int stackCount = current2.stackCount;
-                                    current2.stackCount = 1;
-                                    MinifiedThing minifiedThing = current2.MakeMinified();
-                                    minifiedThing.stackCount = stackCount;
-                                }
-                                flag = true;
-                                yield return current2;
+                                compQuality.SetQuality(QualityUtility.RandomTraderItemQuality(),
+                                    ArtGenerationContext.Outsider);
                             }
+                            if (generatedThing.def.colorGeneratorInTraderStock != null)
+                            {
+                                var color = generatedThing.def.colorGeneratorInTraderStock.NewRandomizedColor();
+                                generatedThing.SetColor(color, true);
+                            }
+                            if (generatedThing.def.Minifiable)
+                            {
+                                int stackCount = generatedThing.stackCount;
+                                generatedThing.stackCount = 1;
+                                MinifiedThing minifiedThing = generatedThing.MakeMinified();
+                                minifiedThing.stackCount = stackCount;
+                            }
+                            flag = true;
+                            yield return generatedThing;
                         }
                     }
-                    finally
+                }
+                finally
+                {
+                    if (!flag)
                     {
-                        if (!flag)
+                        if (generatedThings != null)
                         {
-                            if (enumerator2 != null)
-                            {
-                                enumerator2.Dispose();
-                            }
+                            generatedThings.Dispose();
                         }
                     }
                 }
             }
-            finally
-            {
-            }
+
             yield break;
         }
     }
