@@ -34,7 +34,7 @@ namespace MTW_Treasures
                 this.storedFlour++;
             }
 
-            var flourInCell = Find.ThingGrid.ThingsListAtFast(this.Position)
+            var flourInCell = Find.ThingGrid.ThingsAt(this.Position)
                     .Where(t => t.def == flourDef).FirstOrDefault();
 
             if (flourInCell != null)
