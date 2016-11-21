@@ -26,6 +26,7 @@
     <tradeability>Sellable</tradeability>
     <tradeNeverStack>True</tradeNeverStack>
     <statBases>
+      <MarketValue>250</MarketValue>
       <MaxHitPoints>150</MaxHitPoints>
       <Flammability>0</Flammability>
     </statBases>
