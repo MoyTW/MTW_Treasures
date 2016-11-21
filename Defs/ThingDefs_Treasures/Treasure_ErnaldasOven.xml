@@ -186,6 +186,7 @@
     <useHitPoints>True</useHitPoints>
     <minifiedDef>MinifiedFurniture</minifiedDef>
     <tradeability>Sellable</tradeability>
+    <tradeNeverStack>True</tradeNeverStack>
     <statBases>
       <MaxHitPoints>490</MaxHitPoints>
       <Flammability>0</Flammability>

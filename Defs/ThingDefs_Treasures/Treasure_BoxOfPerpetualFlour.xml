@@ -25,6 +25,7 @@
     <tickerType>Normal</tickerType>
     <minifiedDef>MinifiedFurniture</minifiedDef>
     <tradeability>Sellable</tradeability>
+    <tradeNeverStack>True</tradeNeverStack>
     <statBases>
       <MarketValue>750</MarketValue>
       <MaxHitPoints>100</MaxHitPoints>

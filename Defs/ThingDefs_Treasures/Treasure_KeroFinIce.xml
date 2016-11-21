@@ -24,6 +24,7 @@
     <fillPercent>0.40</fillPercent>
     <minifiedDef>MinifiedFurniture</minifiedDef>
     <tradeability>Sellable</tradeability>
+    <tradeNeverStack>True</tradeNeverStack>
     <statBases>
       <MaxHitPoints>150</MaxHitPoints>
       <Flammability>0</Flammability>
